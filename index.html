@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <img src="https://res.cloudinary.com/teepublic/image/private/s--JoN5AQ6J--/t_Preview/b_rgb:ffffff,c_limit,f_jpg,h_630,q_90,w_630/v1482148840/production/designs/967177_1.jpg" id="image" alt="">
+    <script>
+        // let img = document.getElementById('image');
+        // let canvas = document.createElement('canvas');
+        // // let canvas = $('#canvas')
+        // canvas.width = img.width;
+        // canvas.height = img.height;
+        // canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+        // // console.log(canvas.getContext('2d'));
+        
+        // img.addEventListener('click', (event) => {
+        //     let pixelData = canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+        //     console.log(pixelData);
+        // }) 
+        $(function() {
+    
+    $('img').mousemove(function(event) {
+        
+        if(!this.canvas) {
+            this.canvas = $('<canvas />')[0];
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+            this.canvas.getContext('2d').drawImage(this, 0, 0, this.width, this.height);
+        }
+        
+        var pixelData = this.canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+        
+        console.log('R: ' + pixelData[0] + '<br>G: ' + pixelData[1] + '<br>B: ' + pixelData[2] + '<br>A: ' + pixelData[3]);
+        
+        
+    });
+    
+    
+    
+});
+    </script>
+</body>
+</html>
